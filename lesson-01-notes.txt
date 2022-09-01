@@ -1,0 +1,195 @@
+
+
+
+1.9.2022
+starting practice project
+fullstack with MERN
+
+using Dave Gray's tutorial for help
+https://www.youtube.com/watch?v=H-9l-gTq-C4
+
+Part 1
+starting
+
+installing stuff
+node    (check if it's installed with "node -v" in terminal)
+npm     (same, "npm -v")
+
+plan project
+do crud operations and other stuff first
+do authentication stuff last (in a later part)
+
+
+
+npm init -y
+npm i express
+npm i nodemon -D
+
+do the following changes into package.json
+
+"main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+
+add .gitignore
+node_modules (in .gitignore)
+
+
+
+List of things/concepts to do
+- server
+    - path (to public)
+- public folder
+    - css folder
+        - style.css
+- routes folder
+    - root.js
+- views folder
+    - index.html
+    - 404.html
+
+
+
+------
+Setting up a basic server
+
+create server.js (in the "root")
+
+const express = require('express')
+const app = express()
+const path = require('path')
+const PORT = process.env.PORT || 3500
+
+app.use('/', express.static(path.join(__dirname, '/public')))
+
+app.use('/', require('./routes/root'))
+
+app.all('*', (req, res) => {
+    res.status(404)
+    if (req.accepts('html')) {
+        res.sendFile(path.join(__dirname, 'views', '404.html'))
+        //if something is requested and there is an error, send the 404.html
+    } else if (req.accepts('json')) {
+        res.json({ message: '404 Not Found'})
+        //if a json is requested, send message in json
+    } else {
+        res.type('txt').send('404 Not Found')
+        //if the request doesn't fall into either of the above, send message in txt format
+    }
+})
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+
+/*
+basically:
+
+define things:
+- express                   (imports express)
+- app = express()           (express stuff)
+- path                      (path stuff)
+- port                      (port stuff)
+
+use functions:
+app.use express static      (where to look for stuff, such as images)
+
+app.use require routes root (handles requested pages???)
+
+app.all                     (catches anything that anything else didn't catch, handles 404 stuff)
+
+app.listen port             (listen to port)
+
+
+
+
+
+
+note: __dirname goes into server folder, in other words the very base folder
+*/
+
+
+
+------
+Public folder
+
+this folder has all the resources that the web app uses
+such as css
+(for now the style.css uses the css from the tutorial)
+
+
+
+------
+Routes folder
+
+what is it for, insert here
+for starters we make "root.js" in there
+
+
+
+------
+Root
+
+what is it for? what does it do?
+how is it made?
+
+require express
+require router
+require path
+
+router
+router.get('^/$ |/index(.html)?')
+what does the above mean? (its regex)
+^ at the beginning of the string only / $ at the end of the string only
+this means this will only match if the requested route is only a slash "/", which is the root
+| or /index or index.html (.html is made optional with the ?)
+so a user could request root / or /index or /index.html
+then
+a request resolve arrow function
+res.sendFile to send a file?
+
+
+
+------
+Views folder
+
+for html pages such as index and 404
+
+------
+Index.html, 404.html
+
+type ! to do the emmett thing
+change title into appropriate
+place link below title(stylesheet, css/style.css)
+in body, place some message
+
+
+
+------
+
+
+
+Recap:
+
+
+Install things
+Fiddle package.json
+Create .gitignore
+
+Create server.js
+
+Create folders:
+- public
+- public/css
+- routes
+- views
+    
+Inside public/css create:
+- style.css
+
+Inside routes create:
+- root.js
+
+Inside views create:
+- 404.html
+- index.html
