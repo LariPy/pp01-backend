@@ -186,10 +186,33 @@ Create folders:
     
 Inside public/css create:
 - style.css
+//some basic css at first to make things look like something
 
 Inside routes create:
 - root.js
+//setting up basic routing
 
 Inside views create:
 - 404.html
 - index.html
+//first few views that a user might see
+
+
+One more time:
+
+Install stuff
+fiddle with package.json
+create .gitignore
+
+create server
+
+create folders
+
+create necessary components:
+- some basic style
+- some basic routing
+- some basic views
+
+
+
+The basic "skeleton", after which we start adding more stuff
