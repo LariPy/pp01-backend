@@ -1,0 +1,126 @@
+
+
+
+6.9.2022
+https://www.youtube.com/watch?v=JR9BeI7FY3M
+
+Part 2
+middleware
+
+Recap
+we have created the basic stuff
+checked if node and npm are installed
+npm init
+installed express and nodemon -D
+made a small change to package.json
+made .gitignore
+made server.js
+made folders public/css, routes, views
+made style.css, root.js, 404.html, index.html
+
+basic server functions
+now we add middleware
+
+(1. install stuff)
+(2. set up a basic server)
+
+
+
+adding 3 types of middleware
+built-in
+custom
+3rd party
+
+
+
+exoress.static is middleware, already added in part 1
+tells server where to grab static files
+built-in
+
+next middleware so that server can handle json
+app.use(express.json())
+built-in
+
+
+next make 2 folders
+logs
+middleware
+
+add logs into .gitignore
+
+installing date-fns and uuid
+
+create logger.js in middleware folder
+logs folder is for created logs
+custom middleware
+
+errorhandler
+what do?
+custom middleware
+
+npm i cookie-parser
+npm i cors
+add to server.js
+
+cookieparser
+3rd party
+
+cors
+3rd party?
+
+cors is for public api stuff
+gotta do it for some reason?
+then afterwards gonna have to secure the app
+
+make config folder
+allowed origins
+cors options
+
+
+list of stuff server needs to be able to handle
+or rather our app needs?
+
+- know where to grab files from
+- know how to handle json
+- how to make logs
+- errorhandler
+- cookieparser
+- cors
+
+
+
+-----
+logger middleware
+how does it work etc
+
+uses date-fns for date
+uses uuid for unique id for each log item
+fs for reading file?
+fs promises ???
+path for pathing
+
+logEvents as a helper
+
+then the main logger function
+(stuff???)
+
+add logger import into server.js
+app.use at the top, why top?
+
+-----
+
+errorhandler
+
+-----
+
+reacp of the whole thing so far:
+
+install stuff
+set up basic server
+set up stuff server has to do
+- know where to grab files from
+- know how to handle json
+- how to make logs
+- errorhandler
+- cookieparser
+- cors
